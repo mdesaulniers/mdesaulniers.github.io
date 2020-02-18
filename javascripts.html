@@ -34,6 +34,96 @@
         
         <h2><a href="https://www.khanacademy.org/computer-programming/desaulniers_bitmoji/5974874575618048">desaulniers_bitmoji</a></h2><script src="https://www.khanacademy.org/computer-programming/desaulniers_bitmoji/5974874575618048/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
         
+            
+            var drawBody = function( bodyX, bodyY){
+ //body
+stroke(0,0,0);
+fill(26, 138, 56);
+rect(bodyX, bodyY,48,51,2);
+fill(26, 138, 56);
+quad(bodyX - 15, bodyY + 39, bodyX + 1, bodyY + 13, bodyX + 1, bodyY, bodyX - 21,bodyY + 35); //left arm
+quad(bodyX + 74, bodyY + 37, bodyX + 47, bodyY + 1, bodyX + 48, bodyY + 16, bodyX + 65, bodyY + 39); // right arm   
+};
+
+var drawHead = function(bodyX, bodyY){
+    //Hood
+stroke(0, 0, 0);
+fill(26, 138, 56);
+arc(bodyX + 24, bodyY, 47, 39, 181, 361);
+stroke(0, 0, 0);
+fill(110, 109, 109);
+arc(bodyX + 24, bodyY, 34, 32, 181, 361);
+
+
+noStroke();
+
+fill(237, 194, 156);//skin color
+ellipse(bodyX + 3, bodyY - 44, 30, 25); //left ear
+ellipse(bodyX + 44, bodyY - 44, 30, 25); // right ear
+ellipse(bodyX + 24, bodyY - 43, 62, 67); //head
+
+//Mouth
+stroke(0,0,0);
+strokeWeight(2);
+fill(255, 255, 255);
+arc(bodyX + 24, bodyY - 30, 29, 32, 6, 178);
+line(bodyX + 10, bodyY - 30, bodyX + 37, bodyY - 30);
+
+//Teeth
+line(bodyX + 11, bodyY - 23, bodyX + 34, bodyY - 23);
+line(bodyX + 14, bodyY - 20, bodyX + 14, bodyY - 30);
+line(bodyX + 19, bodyY - 17, bodyX + 19, bodyY - 30);
+line(bodyX + 24, bodyY - 17, bodyX + 24, bodyY - 30);
+line(bodyX + 29, bodyY - 17, bodyX + 29, bodyY - 30);
+line(bodyX + 34, bodyY - 20, bodyX + 34, bodyY - 29);
+
+//Nose
+line(bodyX + 22, bodyY - 42, bodyX + 26, bodyY - 35);
+line(bodyX + 19, bodyY - 34, bodyX + 26, bodyY - 34);
+
+//Eyes
+ellipse(bodyX + 13, bodyY - 53, 10, 15);
+ellipse(bodyX + 30, bodyY - 53, 10, 15);
+fill(110, 74, 57);
+ellipse(bodyX + 13, bodyY - 53, 3, 3);
+ellipse(bodyX + 30, bodyY - 53, 3, 3);
+
+//Neck
+noStroke();
+fill(237, 194, 156);//skin color
+rect(bodyX + 17, bodyY - 13, 13, 13);
+
+//Black Beanie
+fill(0, 0, 0);
+arc(bodyX + 24, bodyY - 73, 52, 42, 181, 361);
+rect(bodyX - 6, bodyY- 73, 60, 11);
+
+text("M.D.", bodyX + 13, bodyY + 15);
+};
+
+var drawBitmoji = function( bodyX, bodyY){
+    drawBody(bodyX, bodyY);
+    drawHead(bodyX, bodyY);
+};
+  
+  
+  var stillplaying = true;
+   
+   var draw = function() {
+       if (stillplaying)
+       {
+           drawBody(mouseX,mouseY,50,50);
+           drawHead(mouseX,mouseY,50,50);
+           if (mouseY === 94) {stillplaying=false; 
+           fill(255, 0, 17);
+           textSize(23);
+           text("Out of Bounds", 200, 200);}
+         
+       }
+   };
+   //Hit Restart to try again
+            
+            
     </body>
 </html>
         
